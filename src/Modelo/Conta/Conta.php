@@ -7,11 +7,15 @@ class Conta
     private $titular;
     private $saldo;
     private static $numeroDeContas = 0;
+    // 1 == conta corrente , 2 == poupança
+    private $tipo;
 
-    public function __construct(Titular $titular)
+
+    public function __construct(Titular $titular, $tipo)
     {
         $this->titular = $titular;
         $this->saldo = 0;
+        $this->tipo = $tipo;
 
         self::$numeroDeContas++;
     }
@@ -23,12 +27,23 @@ class Conta
 
     public function saca(float $valorASacar): void
     {
-        if ($valorASacar > $this->saldo) {
+        if($this->tipo === 1 ){
+            
+            $tarifaSaque = $valorASacar * 0.05;
+
+        }else{
+
+            $tarifaSaque = $valorASacar * 0.03;
+
+        }
+
+        $valorSaque = $valorASacar + $tarifaSaque;
+        if ($valorSaque > $this->saldo) {
             echo "Saldo indisponível";
             return;
         }
 
-        $this->saldo -= $valorASacar;
+        $this->saldo -= $valorSaque;
     }
 
     public function deposita(float $valorADepositar): void
