@@ -5,18 +5,15 @@ namespace Alura\Banco\Modelo\Conta;
 class Conta
 {
     private $titular;
-    private $saldo;
+    protected $saldo;
     private static $numeroDeContas = 0;
     // 1 == conta corrente , 2 == poupança
-    private $tipo;
 
 
-    public function __construct(Titular $titular, $tipo)
+    public function __construct(Titular $titular)
     {
         $this->titular = $titular;
         $this->saldo = 0;
-        $this->tipo = $tipo;
-
         self::$numeroDeContas++;
     }
 
@@ -27,15 +24,8 @@ class Conta
 
     public function saca(float $valorASacar): void
     {
-        if($this->tipo === 1 ){
             
-            $tarifaSaque = $valorASacar * 0.05;
-
-        }else{
-
-            $tarifaSaque = $valorASacar * 0.03;
-
-        }
+        $tarifaSaque = $valorASacar * 0.05;
 
         $valorSaque = $valorASacar + $tarifaSaque;
         if ($valorSaque > $this->saldo) {
