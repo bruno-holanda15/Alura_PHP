@@ -8,7 +8,8 @@ class Dev extends Funcionario
 
     public function calculaBonificacao() :float
     {
-        return $this->recuperaSalario() * 0.3;
+        // return $this->recuperaSalario() * 0.3;
+        return 500.0;
     }
 
     public function sobeDeNivel()
