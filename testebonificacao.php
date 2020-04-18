@@ -6,7 +6,6 @@ use Alura\Banco\Services\ControladorDeBonificacoes;
 use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Funcionario\{ Gerente, Diretor, Dev, EditorVideo};
 
-
 $umFuncionario = new Dev(
     'Brunin' ,
     new CPF('455.497.568-11'),
@@ -40,7 +39,5 @@ $controlador->adicionaBonificacao($umaFuncionaria);
 $controlador->adicionaBonificacao($umFuncionario);
 $controlador->adicionaBonificacao($umDiretor);
 $controlador->adicionaBonificacao($umEditor);
-
-
 
 echo $controlador->recuperaTotal();
