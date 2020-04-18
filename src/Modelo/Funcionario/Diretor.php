@@ -1,9 +1,11 @@
 <?php
 
 namespace Alura\Banco\Modelo\Funcionario;
-use Alura\Banco\{ Pessoa, CPF};
 
-class Diretor extends Funcionario
+use Alura\Banco\{ Pessoa, CPF};
+use Alura\Banco\Modelo\Autenticavel;
+
+class Diretor extends Funcionario implements Autenticavel
 {
 
     public function calculaBonificacao() :float
